@@ -16,18 +16,21 @@ const login=() => {
         'c1234',
     ]
     const [success, setSuccess] = useState(false);  // sucess 최초 값 false 로 지정, setSuccess는  success의 값을 변경해준다 
-    const[id, setId] = useState("");  // id 최초 값 ""으로 지정
+    const [id, setId] = useState("");  // id 최초 값 ""으로 지정
     const login=(id)=>{
     // for 문 또는 find ... 매칭
-      // ids.find((e) => e==id)
-      if(ids.find((e) => e==id))
-          setSuccess(true);
+      if(ids.find((e) => e === id))  // text 로 입력된 값과 id 값이 같은 경우 
+      {
+        setSuccess(true);
+      }    
       else
+      {
         alert("고유 번호를 다시 입력해주세요")
+      }
     }
     return(
       success? // success 한 경우 Test.js로 넘어감
-         <Test/>:
+         <Test id={id}/> :
         <View style= {styles.container}>
             <TextInput
                 style={styles.input}
